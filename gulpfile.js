@@ -29,11 +29,11 @@ function scripts () {
 
 function styles() {
     const mainSassFilePath     = 'app/scss/main.scss';
-    const mainSassFileDistPath = 'dist/css/';
+    const mainSassFileDistPath = 'app/css/';
 
     return src(mainSassFilePath)
         .pipe(sass())
-        .pipe(concat('app.min.css'))
+        .pipe(concat('main.min.css'))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 10 versions'],
             grid                : true,
