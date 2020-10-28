@@ -5,6 +5,9 @@
   "repository": "https://github.com/vkorneva/gulp-start-pack.git",
   "author": "Korneva Viktoria Vadimovna",
   "license": "MIT",
+  "dependencies": {
+    "vkorneva-ui": "https://github.com/vkorneva/vkorneva-ui.git"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.13",
     "del": "^6.0.0",

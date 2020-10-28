@@ -9,8 +9,6 @@ const imagemin                               = require('gulp-imagemin');
 const newer                                  = require('gulp-newer');
 const del                                    = require('del');
 
-const preprocessor                           = 'sass';
-
 function browsersync () {
     browserSync.init({
         server: { baseDir: 'app/' },
@@ -29,12 +27,12 @@ function scripts () {
         .pipe(browserSync.stream());
 }
 
-function styles () {
-    const mainSassFilePath     = `app/${preprocessor}/main.${preprocessor}`;
+function styles() {
+    const mainSassFilePath     = 'app/scss/main.scss';
     const mainSassFileDistPath = 'dist/css/';
 
     return src(mainSassFilePath)
-        .pipe(eval(preprocessor)())
+        .pipe(sass())
         .pipe(concat('app.min.css'))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 10 versions'],
@@ -48,12 +46,12 @@ function styles () {
             },
         }))
         .pipe(dest(mainSassFileDistPath))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
 }
 
 function images () {
     const imagesPath     = 'app/assets/images/**/*';
-    const imagesDistPath = 'app/assets/images/dest/';
+    const imagesDistPath = 'app/assets/images/';
 
     return src(imagesPath)
         .pipe(newer(imagesDistPath))
@@ -62,7 +60,7 @@ function images () {
 }
 
 function cleanImagesDist () {
-    const imagesPath = 'app/assets/images/dest/**/*';
+    const imagesPath = 'app/assets/images/**/*';
     return del(imagesPath, { force: true });
 }
 
@@ -87,12 +85,12 @@ function cleanDist () {
 function startWatch () {
     const includedJsFiles = 'app/**/*.js';
     const excludedJsFiles = '!app/**/*.min.js';
-    const sassFiles       = `app/**/${preprocessor}/**/*`;
+    const scssFiles       = 'app/**/scss/**/*';
     const htmlFiles       = 'app/**/*.html';
     const imagesFiles     = 'app/images/src/**/*';
 
     watch([includedJsFiles, excludedJsFiles], scripts);
-    watch(sassFiles, styles);
+    watch(scssFiles, styles);
     watch(htmlFiles).on('change', browserSync.reload);
     watch(imagesFiles, images);
 }
@@ -103,5 +101,5 @@ exports.styles          = styles;
 exports.images          = images;
 exports.cleanImagesDist = cleanImagesDist;
 
-exports.build   = series(cleanDist, styles, scripts, images, copyBuildFilesToDist);
-exports.default = parallel(styles, scripts, browsersync, startWatch);
+exports.build = series(cleanDist, styles, scripts, images, copyBuildFilesToDist);
+exports.watch = parallel(styles, scripts, browsersync, startWatch);
