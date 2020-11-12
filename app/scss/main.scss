@@ -1,3 +1,22 @@
-body {
-    background-color : green;
+@import "../../node_modules/vkorneva-ui/src/scss/index.scss";
+@import "default";
+
+@import "section";
+
+@import "plans-pricing";
+@import "plan-pricing";
+
+.body-kvv {
+    //font-family      : $font-families(base);
+    //font-size        : $font-sizes(base);
+    line-height      : 1.5;
+    color            : $coal;
+    background-color : $snow;
+    margin           : 0;
+}
+
+.layout {
+    display        : flex;
+    flex-direction : column;
+    min-height     : 100%;
 }

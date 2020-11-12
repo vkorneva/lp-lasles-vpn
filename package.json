@@ -6,6 +6,7 @@
   "author": "Korneva Viktoria Vadimovna",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "vkorneva-ui": "https://github.com/vkorneva/vkorneva-ui.git"
   },
   "devDependencies": {

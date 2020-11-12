@@ -1,0 +1,11 @@
+.plans-pricing__list {
+    display : flex;
+}
+
+.plans-pricing__item {
+    flex : 1 0 0;
+
+    &:not(:last-child) {
+        margin-right : 50px;
+    }
+}
