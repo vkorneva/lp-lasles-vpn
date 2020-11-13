@@ -51,6 +51,7 @@
 
 .btn-kvv {
     font-weight : 600;
+    transition  : background-color 0.5s linear, color 0.6s linear;
 }
 
 .btn-kvv-secondary {
@@ -63,6 +64,13 @@
     padding          : 15px 65px;
     cursor           : pointer;
 
+    &::after {
+        content    : "";
+        opacity    : 0;
+        z-index    : -1;
+        transition : opacity 1s linear;
+    }
+
     &:hover,
     &:focus {
         background-color : $brand;
@@ -70,7 +78,6 @@
         z-index          : 0;
 
         &::after {
-            content          : "";
             position         : absolute;
             top              : 15px;
             left             : 0;
@@ -79,7 +86,7 @@
             background-color : rgba(245, 56, 56, 0.35);
             filter           : blur(20px);
             border-radius    : 60px;
-            z-index          : -1;
+            opacity          : 1;
         }
     }
 
