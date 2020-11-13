@@ -1,10 +1,12 @@
 @import "../../node_modules/vkorneva-ui/src/scss/index.scss";
+@import "reset";
 @import "default";
 
 @import "section";
 
 @import "plans-pricing";
 @import "plan-pricing";
+@import "price";
 
 .body-kvv {
     //font-family      : $font-families(base);

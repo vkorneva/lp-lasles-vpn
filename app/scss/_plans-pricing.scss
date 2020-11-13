@@ -1,11 +1,39 @@
-.plans-pricing__list {
-    display : flex;
-}
+.plans-pricing {
+    &__list {
+        display : flex;
+    }
 
-.plans-pricing__item {
-    flex : 1 0 0;
+    &__item {
+        flex : 1 0 0;
+    }
 
-    &:not(:last-child) {
-        margin-right : 50px;
+    @media (max-width : 479px) {
+        .plans-pricing__item {
+            &:not(:last-child) {
+                margin-bottom : 15px;
+            }
+        }
+    }
+    @media (min-width : 480px) and (max-width : 719px) {
+        .plans-pricing__item {
+            &:not(:last-child) {
+                margin-bottom : 30px;
+            }
+        }
+    }
+    @media (max-width : 719px) {
+        .plans-pricing__list {
+            flex-direction : column;
+        }
+    }
+    @media (min-width : 720px) and (max-width : 1023px) {
+
+    }
+    @media (min-width : 1024px) {
+        .plans-pricing__item {
+            &:not(:last-child) {
+                margin-right : 50px;
+            }
+        }
     }
 }

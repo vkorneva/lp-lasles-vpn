@@ -1,0 +1,23 @@
+.price {
+    display     : flex;
+    align-items : center;
+    font-size   : 25px;
+
+    &__duration {
+        display     : flex;
+        align-items : center;
+    }
+
+    &__amount {
+        font-weight : 600;
+    }
+
+    &__amount + &__duration {
+        color : $wolf;
+
+        &::before {
+            content : "/";
+            margin  : 0 5px;
+        }
+    }
+}

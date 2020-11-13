@@ -1,6 +1,125 @@
-.plan-pricing {
-    background-color : $snow;
-    border           : 2px solid $smoke;
-    border-radius    : 10px;
-    padding          : 80px 70px 50px;
+$plans-pricing            : (
+    "free",
+    "standard",
+    "premium"
+);
+
+$plan-pricing-icon-width  : 145px;
+$plan-pricing-icon-height : 165px;
+
+@each $type in $plans-pricing {
+    .plan-pricing-#{$type} {
+        .plan-pricing__icon {
+            background-image : url("../assets/images/icons/plan-#{$type}.svg");
+        }
+    }
 }
+
+.plan-pricing {
+    position         : relative;
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : space-between;
+    background-color : $snow;
+    border           : 0;
+    box-shadow       : inset 0 0 0 2px $smoke;
+    height           : 100%;
+
+   /* &::before,
+    &::after {
+        content    : "";
+        position   : absolute;
+        box-sizing : inherit;
+        border     : 2px solid transparent;
+        width      : 0;
+        height     : 0;
+    }
+
+    &::before {
+        top  : 0;
+        left : 0;
+    }
+
+    &::after {
+        bottom : 0;
+        right  : 0;
+    }
+
+    &:hover {
+        &::before,
+        &::after {
+            width  : 100%;
+            height : 100%;
+        }
+
+        &::before {
+            border-top-color   : $brand;
+            border-right-color : $brand;
+            transition         : width 0.25s ease-out, height 0.25s ease-out 0.25s;
+        }
+
+        &::after {
+            border-bottom-color : $brand;
+            border-left-color   : $brand;
+            transition          : border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+        }
+    }*/
+
+    &__content {
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+    }
+
+    &__icon {
+        flex-shrink       : 0;
+        width             : $plan-pricing-icon-width;
+        height            : $plan-pricing-icon-height;
+        margin-bottom     : 30px;
+        background-size   : cover;
+        background-repeat : no-repeat;
+    }
+
+    &__title {
+        font-size     : 18px;
+        line-height   : 30px;
+        margin-bottom : 30px;
+        text-align    : center;
+        font-weight   : 600;
+    }
+
+    &__list {
+        margin-bottom : 50px;
+    }
+
+    &__footer {
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+    }
+
+    &__price {
+        margin-bottom : 20px;
+    }
+
+    @media (max-width : 479px) {
+        padding : 20px 15px 30px;
+
+        .plan-pricing__icon {
+            width         : calc(#{$plan-pricing-icon-width} / 2);
+            height        : calc(#{$plan-pricing-icon-height} / 2);
+            margin-bottom : 15px;
+        }
+        .plan-pricing__title {
+            margin-bottom : 15px;
+        }
+        .plan-pricing__list {
+            margin-bottom : 25px;
+        }
+    }
+    @media (min-width : 1023px) {
+        padding : 80px 70px 50px;
+    }
+}
+
+
